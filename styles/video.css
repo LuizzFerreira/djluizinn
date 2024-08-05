@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.videos{
+    padding-top: 50px;
+    width: 70%;
+    margin: auto;
+}
+.videos > div > a > video{
+    border-radius: 5px;
+    height: 500px;
+}
+.videos > div {
+    gap: 20px;
+}
+.videos > h1 {
+    font-size: 35px;
+    color: white;
+    text-shadow: 1px 4px 10px black;
+}
+.videos1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
+}

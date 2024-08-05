@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.fotos{
+    padding-top: 50px;
+    width: 70%;
+    margin: auto;
+}
+.fotos > div > a > img{
+    border-radius: 5px;
+    height: 300px;
+}
+.fotos > h1 {
+    font-size: 35px;
+    color: white;
+    text-shadow: 1px 4px 10px black;
+}
+.fotos1{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.fotos2{
+    display: flex;
+    width: 94%;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 70px;
+}

@@ -1,0 +1,88 @@
+.hidden{
+    display: none;
+}
+main{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.background{
+    position: absolute;
+    z-index: 1;
+    filter: blur(10px);
+    width: 100%;
+    height: 100%;
+}
+.icons{
+    display: grid;
+    position: absolute;
+    left: 60px;
+    margin-top: 50px;
+    line-height: 55px;
+}
+.icons > a > i > img {
+    box-shadow: 1px 5px 10px black;
+    border-radius: 20px;
+}
+/*Container de imagens trocandox*/
+.slider {
+    width: 250px;
+    height: 333.33px;
+    overflow: hidden;
+    border-radius: 5%;
+  }
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .slides img {
+    width: 100%;
+    border-radius: 5%;
+  }
+  .container{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 100px;
+    padding-bottom: 100px;
+  }
+  .organisation{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 60px;
+  }
+  .organisation > h1 {
+    font-family: font1;
+    width: 60%;
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 1px 2px 10px black;
+  }
+  .media > a {
+    text-decoration: none;
+    color: #fff;
+    text-shadow: 1px 2px 10px black;
+  }
+  .media > a > img {
+    margin-top: 10px;
+    border-radius: 20px;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.233);
+  }
+  .euImg1{
+    display: none;
+    position: relative;
+    height: 300px;
+  }
+  @media(max-width: 769px) {
+    .organisation {
+      flex-direction: column;
+    }
+    .organisation > h1 {
+      width: 100%;
+      margin-left: 20px;
+      font-size: 30px;
+    }
+  }

@@ -1,0 +1,23 @@
+h1{
+    font-size: 40px;
+    color: white;
+    font-family: font1;
+    text-shadow: 1px 5px 10px black;
+    padding-top: 50px;
+}
+.containerIcones{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.containerIcones > a > img{
+    border-radius: 10px;
+}
+.containerIcones > div{
+    gap: 100px;
+    line-height: 100px;
+    display: block;
+    justify-content: space-between;
+}

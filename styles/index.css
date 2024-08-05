@@ -1,0 +1,120 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: font2;
+}
+header{
+    background-color: rgb(0, 0, 0);
+    height: 100px;
+    display: flex;
+}
+.contentStyle {
+  width: 80%;
+  margin: auto;
+}
+/*Menu Mobile*/
+.menu-container {
+  position: relative;
+  margin-left: 40px;
+}
+
+.menu-button {
+  background: none;
+  cursor: pointer;
+  height: 60px;
+  width: 60px;
+  margin: auto;
+  border: none;
+}
+
+.menu-content {
+  display: none;
+  position: absolute;
+  top: 100px; /* Ajuste conforme necessário */
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 5px 8px rgba(0, 0, 0, 0.486);
+  z-index: 1001;
+}
+.menu-content ul {
+  list-style: none;
+}
+
+.menu-content ul li{
+  margin-top: 10px;
+}
+
+.menu-content ul li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 10px 20px;
+  font-family: font2;
+}
+
+.menu-content ul li a:hover {
+  background-color: #f0f0f0;
+}
+.blur {
+  filter: blur(2px);
+}
+.navBar{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-left: 30px;
+    padding-top: 10px;
+    align-items: center;
+}
+.navBar > li{
+  border-radius: 10px;
+}
+.navBar > li > a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 17px;
+    padding: 5px;
+    font-family: font2;
+}
+.navBar > li:not(.navBar > li:nth-child(1)):hover{
+  background-color: #fff;
+  transition: 1s;
+}
+.navBar > li > a:not(.navBar > li:nth-child(1)):hover{
+  color: black;
+}
+.euImg{
+    position: fixed;
+    right: 10px;
+    bottom: 0;
+    height: 250px;
+}
+.menu-container{
+  display: none;
+}
+.imgPainel{
+  display: flex;
+  width: 50%;
+  margin: auto;
+  padding-bottom: 100px;
+}
+.imgPainel > img{
+  height: 10%;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: 1px 5px 10px black;
+}
+.lastContainer{
+  display: flex;
+  width: 70%;
+  align-items: center;
+  margin: auto;
+  margin-top: 100px;
+}
+.lastContainer > mark {
+  background: none;
+  font-size: 30px;
+  color: white;
+  font-family: font1;
+  text-shadow: 1px 5px 10px black;
+}

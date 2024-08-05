@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Contatos</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/feedback.css">
+    <link rel="stylesheet" href="mobile/mobile.css">
+    <link rel="stylesheet" href="feedback.js">
+    <style>
+        @font-face {
+            font-family: font1;
+            src: url(poppins/Poppins-Bold.ttf);
+        }
+        @font-face {
+            font-family: font2;
+            src: url(poppins/Poppins-Regular.ttf);
+        }
+        main{
+            background-image: url(img/Imagem-Background.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="menu-container"> <!--Menu mobile-->
+            <button id="menu-button" class="menu-button">
+                <img src="img/menu-svgrepo-com.webp" alt="Icone menu" height="20px">
+            </button>
+            <div id="menu-content" class="menu-content">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="contatos.html">Contatos</a></li>
+                    <li><a href="fotos.html">Fotos</a></li>
+                    <li><a href="video.html">Videos</a></li>
+                </ul>
+            </div>
+        </div>
+        <ul class="navBar">
+            <a href="index.html"><img src="img/WhatsApp Image 2023-02-15 at 20.27.29.png" alt="Logo DJ" height="85px"
+                width="85px"></a>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contatos.html">Contatos</a></li>
+            <li><a href="fotos.html">Fotos</a></li>
+            <li><a href="video.html">Videos</a></li>
+        </ul>
+    </header>
+    <main>
+        <section class="feedbacks">
+            <div class="feedbacks-container">
+                <span>
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                </span>
+                <p class="feedback-name">Viviane</p>
+                <p class="feedback-text">Dj Luizin foi maravilhoso ao realizar nosso evento com seu trabalho perfeito, fazendo nosso dia ainda mais animado e feliz!!! Super recomendo!!!</p>
+            </div>
+            <div class="feedbacks-container">
+                <span>
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                </span>
+                <p class="feedback-name">Jaqueline</p>
+                <p class="feedback-text">Foi maravilhoso ter você em nossa festa!! Equipamentos de muita qualidade e atendimento TOP!!! </p>
+            </div>
+            <div class="feedbacks-container">
+                <span>
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                    <img src="img/star-icon-png-2.png" alt="Icone Estrela" width="20" height="20">
+                </span>
+                <p class="feedback-name">Beth</p>
+                <p class="feedback-text">Dj exelente, equipamento de ótima qualidade.</p>
+            </div>
+        </section>
+        <section class="contact-form">
+            <h2>Feedback</h2>
+            <form id="contactForm" action="https://formspree.io/f/mvgpondb" method="POST">
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Feedback:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Enviar Feedback</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="organisation-footer">
+            <img src="img/WhatsApp Image 2023-02-15 at 20.27.29.png" alt="Imagem Logo" class="logo-footer">
+            <ul>
+                <li>
+                    <a href="https://wa.me/5521995575988"><span>&gt;</span> Entre em contato</a>
+                    <a href="contatos.html"><span>&gt;</span> Mídias sociais</a>
+                    <a href="fotos.html"><span>&gt;</span> Fotos</a>
+                    <a href="video.html"><span>&gt;</span> Vídeos</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>

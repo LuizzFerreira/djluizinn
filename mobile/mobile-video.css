@@ -1,0 +1,45 @@
+@media(max-width: 1252px){
+    .videos > div > a > video{
+        height: 400px;
+    }
+}
+@media(max-width: 1013px){
+    .videos > div > a > video{
+        height: 300px;
+    }
+    .euImg{
+        display: none;
+    }
+}
+@media(max-width: 770px){
+    .videos > div > a > video{
+        height: 200px;
+    }
+    .videos{
+        width: 60%;
+    }
+}
+@media(max-width: 541px){
+    .videos{
+        width: 55%;
+    }
+}
+@media(max-width: 507px){
+    .icons{
+        left: 5%;
+    }
+    .videos{
+        width: 70%;
+    }
+}
+@media(max-width: 453px){
+    .videos{
+        width: 60%;
+    }
+    .videos > div {
+         display: block;
+    }
+    .videos > div > a > video{
+        height: 450px;
+    }
+}

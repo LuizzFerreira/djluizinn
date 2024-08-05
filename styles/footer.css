@@ -1,0 +1,30 @@
+footer{
+    background-color: black;
+    height: 260px;
+    align-items: center;
+}
+.organisation-footer{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    gap: 100px;
+    padding-top: 30px;
+    align-items: center;
+}
+.logo-footer{
+    width: 200px;
+}
+ul {
+    list-style-type: none;
+}
+ul > li > a {
+    text-decoration: none;
+    color: white;
+    font-family: font1;
+    display: block;
+    font-size: 20px;
+    line-height: 40px;
+}
+ul > li > a > span {
+    color: blueviolet;
+}
