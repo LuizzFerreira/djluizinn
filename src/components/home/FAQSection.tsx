@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: 'Vocês atendem em todo o Brasil?',
-    a: 'Atendemos principalmente São Paulo e região, mas para eventos especiais podemos atender em todo o território nacional. Entre em contato para verificar disponibilidade.',
+    a: 'Atendemos principalmente Rio de Janeiro e região, mas para eventos especiais podemos atender em todo o território nacional. Entre em contato para verificar disponibilidade.',
   },
   {
     q: 'Qual o prazo mínimo para contratar?',
@@ -17,15 +17,11 @@ const faqs = [
   },
   {
     q: 'Como funciona o pagamento?',
-    a: 'Trabalhamos com entrada de 30% na confirmação e o restante até 7 dias antes do evento. Aceitamos PIX, transferência e cartão de crédito.',
+    a: 'Trabalhamos com entrada de 50% na confirmação e o restante até o dia do evento. Aceitamos PIX, transferência e cartão de crédito.',
   },
   {
     q: 'Posso alterar os serviços após a contratação?',
     a: 'Sim! Você pode adicionar ou remover serviços até 15 dias antes do evento, sujeito à disponibilidade e ajuste de valores.',
-  },
-  {
-    q: 'Vocês fornecem contrato?',
-    a: 'Sim, todos os nossos serviços são formalizados com contrato digital, garantindo segurança para ambas as partes.',
   },
 ]
 
