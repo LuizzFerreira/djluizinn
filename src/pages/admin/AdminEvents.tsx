@@ -35,6 +35,8 @@ export default function AdminEvents() {
   const [savingPrice, setSavingPrice] = useState<string | null>(null)
   const [editingPago, setEditingPago] = useState<Record<string, string>>({})
   const [savingPago, setSavingPago] = useState<string | null>(null)
+  const [editingObs, setEditingObs] = useState<Record<string, string>>({})
+  const [savingObs, setSavingObs] = useState<string | null>(null)
   const queryClient = useQueryClient()
 
   const { data: events, isLoading } = useQuery({
@@ -80,6 +82,21 @@ export default function AdminEvents() {
       toast.error('Erro ao salvar valor.')
     } finally {
       setSavingPrice(null)
+    }
+  }
+
+  async function saveObs(eventId: string) {
+    const obs = editingObs[eventId] ?? ''
+    setSavingObs(eventId)
+    try {
+      await eventService.updateObservacao(eventId, obs)
+      queryClient.invalidateQueries({ queryKey: ['admin-events'] })
+      toast.success('Observação salva!')
+      setEditingObs(prev => { const n = { ...prev }; delete n[eventId]; return n })
+    } catch {
+      toast.error('Erro ao salvar observação.')
+    } finally {
+      setSavingObs(null)
     }
   }
 
@@ -205,13 +222,41 @@ export default function AdminEvents() {
                   </div>
                 )}
 
-                {/* Observações */}
-                {event.observacoes && (
-                  <div className="bg-white/5 rounded-xl p-3 text-sm">
-                    <span className="text-white/40 text-xs block mb-1">Observações</span>
-                    <span className="text-white/80">{event.observacoes}</span>
+                {/* Observação admin */}
+                <div className="bg-white/5 rounded-xl p-3 text-sm">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-white/40 text-xs">Observação (visível ao cliente)</span>
+                    {editingObs[event.id] === undefined && (
+                      <button
+                        onClick={() => setEditingObs(prev => ({ ...prev, [event.id]: event.observacao ?? '' }))}
+                        className="text-white/30 hover:text-[#c9a84c] transition-colors cursor-pointer"
+                      >
+                        <Pencil size={12} />
+                      </button>
+                    )}
                   </div>
-                )}
+                  {editingObs[event.id] !== undefined ? (
+                    <div className="space-y-2">
+                      <textarea
+                        autoFocus
+                        rows={3}
+                        className="w-full bg-white/10 border border-[#c9a84c]/50 rounded-lg px-3 py-2 text-white/80 text-sm outline-none focus:border-[#c9a84c] resize-none"
+                        value={editingObs[event.id]}
+                        onChange={e => setEditingObs(prev => ({ ...prev, [event.id]: e.target.value }))}
+                      />
+                      <div className="flex gap-2">
+                        <button onClick={() => saveObs(event.id)} disabled={savingObs === event.id} className="flex items-center gap-1 text-green-400 hover:text-green-300 text-xs cursor-pointer disabled:opacity-50">
+                          <Check size={13} /> Salvar
+                        </button>
+                        <button onClick={() => setEditingObs(prev => { const n = { ...prev }; delete n[event.id]; return n })} className="text-white/30 hover:text-white/60 text-xs cursor-pointer">
+                          Cancelar
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <span className="text-white/60">{event.observacao || <span className="text-white/20 italic">Nenhuma observação</span>}</span>
+                  )}
+                </div>
 
                 {/* Pagamento */}
                 {(event.status === 'confirmado' || event.status === 'finalizado') && (

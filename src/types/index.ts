@@ -90,6 +90,7 @@ export interface Event {
   idade_aniversariante?: number
   sexo_aniversariante?: string
   observacoes?: string
+  observacao?: string
   valor_total: number
   valor_pago: number
   status: EventStatus

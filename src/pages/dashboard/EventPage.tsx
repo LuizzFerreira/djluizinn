@@ -131,6 +131,14 @@ export default function EventPage() {
         ))}
       </div>
 
+      {/* Observação do admin */}
+      {event.observacao && (
+        <div className="glass rounded-2xl p-5">
+          <p className="text-white/40 text-xs mb-1">Observação</p>
+          <p className="text-white/80 text-sm leading-relaxed">{event.observacao}</p>
+        </div>
+      )}
+
       {/* Financial */}
       <div className="glass-gold rounded-2xl p-6">
         {event.status === 'confirmado' || event.status === 'finalizado' ? (
