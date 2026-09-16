@@ -37,6 +37,8 @@ export default function AdminEvents() {
   const [savingPago, setSavingPago] = useState<string | null>(null)
   const [editingObs, setEditingObs] = useState<Record<string, string>>({})
   const [savingObs, setSavingObs] = useState<string | null>(null)
+  const [posEvento, setPosEvento] = useState<Record<string, { realizado: boolean; obs: string }>>({})
+  const [savingPos, setSavingPos] = useState<string | null>(null)
   const queryClient = useQueryClient()
 
   const { data: events, isLoading } = useQuery({
@@ -82,6 +84,22 @@ export default function AdminEvents() {
       toast.error('Erro ao salvar valor.')
     } finally {
       setSavingPrice(null)
+    }
+  }
+
+  async function savePosEvento(eventId: string) {
+    const val = posEvento[eventId]
+    if (!val) return
+    setSavingPos(eventId)
+    try {
+      await eventService.updatePosEvento(eventId, val.realizado, val.obs)
+      queryClient.invalidateQueries({ queryKey: ['admin-events'] })
+      toast.success('Registro salvo!')
+      setPosEvento(prev => { const n = { ...prev }; delete n[eventId]; return n })
+    } catch {
+      toast.error('Erro ao salvar.')
+    } finally {
+      setSavingPos(null)
     }
   }
 
@@ -398,6 +416,88 @@ export default function AdminEvents() {
                     </div>
                   </div>
                 )}
+
+                {/* Pós-evento */}
+                {event.status === 'confirmado' && event.data && (() => {
+                  const [y, m, d] = event.data.split('T')[0].split('-').map(Number)
+                  const dataEvento = new Date(y, m - 1, d)
+                  const passou = dataEvento < new Date(new Date().toDateString())
+                  if (!passou) return null
+                  const jaPreenchido = event.realizado !== null && event.realizado !== undefined
+                  const editing = posEvento[event.id]
+                  return (
+                    <div className={`rounded-xl p-4 space-y-3 ${
+                      jaPreenchido
+                        ? event.realizado ? 'bg-green-500/10 border border-green-500/20' : 'bg-red-500/10 border border-red-500/20'
+                        : 'bg-yellow-500/10 border border-yellow-500/20'
+                    }`}>
+                      <p className="text-xs font-semibold text-white/60">
+                        {jaPreenchido ? 'Resultado do evento' : '⚠️ A data deste evento já passou — como foi?'}
+                      </p>
+                      {jaPreenchido && !editing ? (
+                        <div className="space-y-1">
+                          <p className={`text-sm font-bold ${event.realizado ? 'text-green-400' : 'text-red-400'}`}>
+                            {event.realizado ? '✅ Evento realizado' : '❌ Evento não realizado'}
+                          </p>
+                          {event.observacao_pos_evento && (
+                            <p className="text-white/60 text-sm">{event.observacao_pos_evento}</p>
+                          )}
+                          <button
+                            onClick={() => setPosEvento(prev => ({ ...prev, [event.id]: { realizado: event.realizado!, obs: event.observacao_pos_evento ?? '' } }))}
+                            className="text-white/30 hover:text-[#c9a84c] text-xs flex items-center gap-1 cursor-pointer mt-1"
+                          >
+                            <Pencil size={11} /> Editar
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="space-y-3">
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => setPosEvento(prev => ({ ...prev, [event.id]: { realizado: true, obs: editing?.obs ?? '' } }))}
+                              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${
+                                editing?.realizado === true ? 'bg-green-500 text-white' : 'bg-white/5 text-white/50 hover:bg-white/10'
+                              }`}
+                            >
+                              ✅ Realizado
+                            </button>
+                            <button
+                              onClick={() => setPosEvento(prev => ({ ...prev, [event.id]: { realizado: false, obs: editing?.obs ?? '' } }))}
+                              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${
+                                editing?.realizado === false ? 'bg-red-500 text-white' : 'bg-white/5 text-white/50 hover:bg-white/10'
+                              }`}
+                            >
+                              ❌ Não realizado
+                            </button>
+                          </div>
+                          <textarea
+                            rows={2}
+                            placeholder="Observação (opcional)..."
+                            className="w-full bg-white/10 border border-white/10 rounded-lg px-3 py-2 text-white/80 text-sm outline-none focus:border-[#c9a84c] resize-none"
+                            value={editing?.obs ?? ''}
+                            onChange={e => setPosEvento(prev => ({ ...prev, [event.id]: { ...prev[event.id], obs: e.target.value } }))}
+                          />
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => savePosEvento(event.id)}
+                              disabled={savingPos === event.id || editing?.realizado === undefined}
+                              className="flex items-center gap-1 text-green-400 hover:text-green-300 text-xs cursor-pointer disabled:opacity-50"
+                            >
+                              <Check size={13} /> Salvar
+                            </button>
+                            {jaPreenchido && (
+                              <button
+                                onClick={() => setPosEvento(prev => { const n = { ...prev }; delete n[event.id]; return n })}
+                                className="text-white/30 hover:text-white/60 text-xs cursor-pointer"
+                              >
+                                Cancelar
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })()}
 
                 {/* Actions */}
                 {(event.status === 'orcamento' || event.status === 'em_analise') && (() => {

@@ -8,11 +8,12 @@ import { Button } from '@/components/ui/Button'
 import { formatCurrency, formatDate, eventTypeLabels } from '@/utils/cn'
 import { Link } from 'react-router-dom'
 import { Plus, Check, Trash2, Calendar, MapPin, Users, Clock, XCircle, Sparkles, AlertCircle } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { toast } from 'sonner'
 import { Input } from '@/components/ui/Input'
 import { ServicePreferenceForm } from '@/components/ui/ServicePreferenceForm'
 import { ConfirmModal } from '@/components/ui/CancelConfirmModal'
+import confetti from 'canvas-confetti'
 
 const DEV_BYPASS = import.meta.env.VITE_DEV_BYPASS_AUTH === 'true'
 
@@ -29,6 +30,24 @@ export default function EventPage() {
   })
 
   const event = events?.[0]
+
+  useEffect(() => {
+    if (!event) return
+    const [y, m, d] = (event.data ?? '').split('T')[0].split('-').map(Number)
+    const dataEvento = new Date(y, m - 1, d)
+    const passou = dataEvento < new Date(new Date().toDateString())
+    if (!passou || event.realizado !== true) return
+    const key = `confetti_${event.id}`
+    if (localStorage.getItem(key)) return
+    localStorage.setItem(key, '1')
+    const end = Date.now() + 3000
+    const frame = () => {
+      confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#c9a84c', '#fff', '#f0d080'] })
+      confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#c9a84c', '#fff', '#f0d080'] })
+      if (Date.now() < end) requestAnimationFrame(frame)
+    }
+    frame()
+  }, [event?.id, event?.realizado])
 
   const { data: checklist } = useQuery({
     queryKey: ['checklist', event?.id],
@@ -130,6 +149,34 @@ export default function EventPage() {
           </div>
         ))}
       </div>
+
+      {/* Pós-evento */}
+      {event.data && (() => {
+        const [y, m, d] = event.data.split('T')[0].split('-').map(Number)
+        const dataEvento = new Date(y, m - 1, d)
+        const passou = dataEvento < new Date(new Date().toDateString())
+        if (!passou || event.realizado === null || event.realizado === undefined) return null
+        return (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`rounded-2xl p-6 ${
+              event.realizado
+                ? 'bg-gradient-to-br from-[#c9a84c]/20 to-green-500/10 border border-[#c9a84c]/30'
+                : 'bg-red-500/10 border border-red-500/20'
+            }`}
+          >
+            <p className={`text-2xl font-black mb-1 ${
+              event.realizado ? 'text-[#c9a84c]' : 'text-red-400'
+            }`}>
+              {event.realizado ? '✨ Evento realizado com sucesso!' : 'Evento não realizado'}
+            </p>
+            {event.observacao_pos_evento && (
+              <p className="text-white/70 text-sm leading-relaxed mt-2">{event.observacao_pos_evento}</p>
+            )}
+          </motion.div>
+        )
+      })()}
 
       {/* Observação do admin */}
       {event.observacao && (

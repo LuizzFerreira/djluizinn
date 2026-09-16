@@ -167,6 +167,14 @@ export const eventService = {
     if (error) throw error
   },
 
+  async updatePosEvento(id: string, realizado: boolean, observacao_pos_evento: string) {
+    const { error } = await supabase
+      .from('eventos')
+      .update({ realizado, observacao_pos_evento, updated_at: new Date().toISOString() })
+      .eq('id', id)
+    if (error) throw error
+  },
+
   async deleteEvent(id: string) {
     const { error } = await supabase
       .from('eventos')
