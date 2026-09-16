@@ -7,7 +7,9 @@ export function formatCurrency(value: number) {
 }
 
 export function formatDate(date: string) {
-  return new Intl.DateTimeFormat('pt-BR').format(new Date(date))
+  // Forca parse como data local para evitar deslocamento de timezone
+  const [year, month, day] = date.split('T')[0].split('-').map(Number)
+  return new Intl.DateTimeFormat('pt-BR').format(new Date(year, month - 1, day))
 }
 
 export function formatPhone(value: string) {
