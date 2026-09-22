@@ -50,19 +50,19 @@ export function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-[#c9a84c] text-sm font-semibold tracking-widest uppercase">Nossos Serviços</span>
+          <span className="text-[#2563eb] text-sm font-semibold tracking-widest uppercase">O que oferecemos</span>
           <h2 className="text-4xl sm:text-5xl font-black text-white mt-3">
-            Tudo para o seu <span className="gold-text">evento perfeito</span>
+            Tudo que sua festa <span className="gold-text">precisa</span>
           </h2>
           <p className="text-white/50 mt-4 max-w-xl mx-auto">
-            Conheça alguns dos nossos serviços mais populares e dê o primeiro passo para um evento inesquecível.
+            Do som à estrutura completa — o DJ LUIZINN cuida de cada detalhe pra você só se preocupar em curtir.
           </p>
         </motion.div>
 
         <div className="relative">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 z-10 w-10 h-10 glass rounded-full flex items-center justify-center text-white hover:text-[#c9a84c] transition-all duration-300 cursor-pointer ${
+            className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 z-10 w-10 h-10 glass rounded-full flex items-center justify-center text-white hover:text-[#2563eb] transition-all duration-300 cursor-pointer ${
               hovered ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'
             }`}
           >
@@ -70,7 +70,7 @@ export function ServicesSection() {
           </button>
           <button
             onClick={() => swiperRef.current?.slideNext()}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 z-10 w-10 h-10 glass rounded-full flex items-center justify-center text-white hover:text-[#c9a84c] transition-all duration-300 cursor-pointer ${
+            className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 z-10 w-10 h-10 glass rounded-full flex items-center justify-center text-white hover:text-[#2563eb] transition-all duration-300 cursor-pointer ${
               hovered ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'
             }`}
           >
@@ -110,7 +110,7 @@ export function ServicesSection() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         {product.destaque && (
-                          <div className="absolute top-3 left-3 flex items-center gap-1 bg-[#c9a84c] text-black text-xs font-bold px-2 py-1 rounded-full">
+                          <div className="absolute top-3 left-3 flex items-center gap-1 bg-[#2563eb] text-white text-xs font-bold px-2 py-1 rounded-full">
                             <Star size={10} /> Destaque
                           </div>
                         )}
@@ -122,7 +122,7 @@ export function ServicesSection() {
                       </div>
 
                       <div className="p-4 flex flex-col flex-grow">
-                        <span className="text-[#c9a84c] text-xs font-medium">{product.categoria?.nome}</span>
+                        <span className="text-[#2563eb] text-xs font-medium">{product.categoria?.nome}</span>
                         <h3 className="text-white font-semibold mt-1 mb-2">{product.nome}</h3>
                         <p className="text-white/50 text-xs leading-relaxed line-clamp-2 mb-4">{product.descricao}</p>
 

@@ -1,80 +1,221 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #c9a84c;
-  --color-primary-dark: #a8873a;
-  --color-primary-light: #e8c96a;
-  --color-dark: #0a0a0a;
-  --color-dark-2: #111111;
-  --color-dark-3: #1a1a1a;
-  --color-dark-4: #222222;
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-primary-light: #60a5fa;
+  --color-accent: #06b6d4;
+  --color-dark: #05050f;
+  --color-dark-2: #0a0a18;
+  --color-dark-3: #0f0f22;
+  --color-dark-4: #15152e;
   --font-sans: 'Inter', sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
 }
 
-* {
-  scroll-behavior: smooth;
-}
+* { scroll-behavior: smooth; }
 
 body {
-  background-color: #0a0a0a;
+  background-color: #05050f;
   color: #ffffff;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #111;
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0a0a18; }
 ::-webkit-scrollbar-thumb {
-  background: #c9a84c;
+  background: linear-gradient(180deg, #2563eb, #06b6d4);
   border-radius: 3px;
 }
 
+/* ── Glass ── */
 .glass {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .glass-solid {
-  background: rgba(15, 15, 15, 0.97);
+  background: rgba(5, 5, 15, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
 .glass-gold {
-  background: rgba(201, 168, 76, 0.1);
-  border: 1px solid rgba(201, 168, 76, 0.2);
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
+/* ── Gradients ── */
 .gold-gradient {
-  background: linear-gradient(135deg, #c9a84c, #e8c96a, #a8873a);
+  background: linear-gradient(135deg, #1d4ed8, #2563eb, #06b6d4);
 }
 
 .gold-text {
-  background: linear-gradient(135deg, #c9a84c, #e8c96a);
+  background: linear-gradient(135deg, #60a5fa, #06b6d4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .hero-gradient {
-  background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.15) 0%, transparent 70%);
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(37, 99, 235, 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 60%);
 }
 
+/* ── Card hover ── */
 .card-hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card-hover:hover {
   transform: translateY(-8px);
-  box-shadow: 0 30px 60px rgba(201, 168, 76, 0.15);
+  box-shadow: 0 30px 60px rgba(6, 182, 212, 0.15);
 }
 
-.swiper-pagination-bullet {
-  background: #c9a84c !important;
+/* ── Glow pulsante ── */
+.glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 20px rgba(96, 165, 250, 0.7),
+      0 0 60px rgba(37, 99, 235, 0.4),
+      0 0 100px rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 40px rgba(96, 165, 250, 1),
+      0 0 80px rgba(37, 99, 235, 0.6),
+      0 0 140px rgba(6, 182, 212, 0.4);
+  }
 }
-.swiper-button-next,
-.swiper-button-prev {
-  color: #c9a84c !important;
+
+/* ── Neon border ── */
+.neon-border {
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.2), inset 0 0 12px rgba(37, 99, 235, 0.04);
+}
+
+/* ── Waveform ── */
+.waveform { display: flex; align-items: center; gap: 3px; }
+
+.waveform span {
+  display: block;
+  width: 3px;
+  background: linear-gradient(180deg, #2563eb, #06b6d4);
+  border-radius: 2px;
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+.waveform span:nth-child(1)  { height: 8px;  animation-delay: 0s; }
+.waveform span:nth-child(2)  { height: 20px; animation-delay: 0.1s; }
+.waveform span:nth-child(3)  { height: 14px; animation-delay: 0.2s; }
+.waveform span:nth-child(4)  { height: 28px; animation-delay: 0.3s; }
+.waveform span:nth-child(5)  { height: 10px; animation-delay: 0.4s; }
+.waveform span:nth-child(6)  { height: 22px; animation-delay: 0.15s; }
+.waveform span:nth-child(7)  { height: 16px; animation-delay: 0.25s; }
+.waveform span:nth-child(8)  { height: 30px; animation-delay: 0.05s; }
+.waveform span:nth-child(9)  { height: 12px; animation-delay: 0.35s; }
+.waveform span:nth-child(10) { height: 24px; animation-delay: 0.45s; }
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
+  50%       { transform: scaleY(1);   opacity: 1; }
+}
+
+/* ── Scanlines ── */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── WhatsApp float ── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+  animation: floatBounce 3s ease-in-out infinite;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.whatsapp-float:active { transform: scale(0.92); }
+
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ── Swiper ── */
+.swiper-pagination-bullet {
+  background: #2563eb !important;
+  opacity: 0.4 !important;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 20px !important;
+  border-radius: 4px !important;
+}
+
+/* ── Fonts ── */
+.font-display {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-rage {
+  font-family: 'Road Rage', sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* ── Shimmer text ── */
+.gold-text-animate {
+  background: linear-gradient(90deg, #2563eb, #60a5fa, #06b6d4, #2563eb);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
+/* ── Neon line ── */
+.neon-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2563eb, #06b6d4, transparent);
+  opacity: 0.6;
+}
+
+/* ── Floor glow ── */
+.floor-glow {
+  background:
+    radial-gradient(ellipse at 20% 100%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(6, 182, 212, 0.12) 0%, transparent 50%);
 }

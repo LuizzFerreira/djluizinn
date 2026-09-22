@@ -25,9 +25,9 @@ export function LoginModal({ open, onClose }: LoginModalProps) {
         </motion.div>
 
         <div>
-          <h2 className="text-2xl font-bold text-white mb-2">Bem-vindo!</h2>
+          <h2 className="text-2xl font-bold text-white mb-2">Bora fazer acontecer!</h2>
           <p className="text-white/60 text-sm">
-            Entre com sua conta Google para organizar seu evento dos sonhos.
+            Entre com sua conta Google e comece a montar o evento dos seus sonhos com o DJ LUIZINN.
           </p>
         </div>
 
