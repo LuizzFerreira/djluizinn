@@ -73,12 +73,12 @@ export function HeroSection() {
 
         {/* Content */}
         <div className="relative z-20 text-center px-5 max-w-4xl mx-auto pt-20">
-          {/* Badge localização */}
+          {/* Badge localização - esconde no mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-2 mb-6"
+            className="hidden sm:inline-flex items-center gap-2 glass-gold rounded-full px-4 py-2 mb-6"
           >
             <MapPin size={12} className="text-[#2563eb]" />
             <span className="text-[#2563eb] text-xs font-semibold tracking-widest uppercase">DJ Profissional • Rio de Janeiro</span>
@@ -89,9 +89,9 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mb-4"
+            className="mb-3 sm:mb-4"
           >
-            <span className="font-rage text-[clamp(3.5rem,13vw,8rem)] text-white leading-none block">
+            <span className="font-rage text-[clamp(3.5rem,18vw,8rem)] sm:text-[clamp(3.5rem,13vw,8rem)] text-white leading-none block">
               DJ LUIZINN
             </span>
           </motion.div>
@@ -100,17 +100,18 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-5"
+            className="text-lg sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-4 sm:mb-5"
           >
             A festa que você merece<br />
             <span className="gold-text">começa com o DJ certo.</span>
           </motion.h1>
 
+          {/* Descrição - esconde no mobile */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-white/55 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
+            className="hidden sm:block text-white/55 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
           >
             Casamentos, formaturas, aniversários e corporativos. Cada batida pensada pra fazer sua noite inesquecível.
           </motion.p>
@@ -119,7 +120,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.55 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 sm:mb-0"
           >
             <Button size="lg" onClick={handleCTA} className="group w-full sm:w-auto min-h-[52px]">
               Quero minha festa
@@ -140,7 +141,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
-            className="flex items-center justify-center gap-8 mt-14"
+            className="hidden sm:flex items-center justify-center gap-8 mt-14"
           >
             {[
               { value: '200+', label: 'Eventos' },
