@@ -189,6 +189,8 @@ body {
 .font-rage {
   font-family: 'Road Rage', sans-serif;
   letter-spacing: 0.03em;
+  -webkit-text-stroke: 2px currentColor;
+  paint-order: stroke fill;
 }
 
 /* ── Shimmer text ── */
