@@ -17,6 +17,9 @@ dist-ssr
 .env.*
 !.env.example
 
+# Videos originais pesados
+public/videodefesta.mp4
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
